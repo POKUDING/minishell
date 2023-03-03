@@ -6,24 +6,46 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:40:13 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/02/21 16:35:52 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/03 21:28:33 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+typedef struct s_token
+{
+	char			*cmd;
+	char			**argv;
+	int				operator;
+	struct s_token	*next;
+}	t_token;
+
+typedef struct	s_envp_node{
+	char	*name;
+	char	*value;
+	struct s_envp_node	*next;
+} t_envp_node;
+
 # include "./libft/libft.h"
+# include <signal.h>
+# include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <readline/history.h>
 # include <readline/readline.h>
+# include <readline/history.h>
 
+//del del!! del!!
+# include "./inc/test_funcs.h"
 
-
-static char	**build_argv_box(char **box, char *s);
-static char	**cpy_argv_box(char **box, char *s);
-static char	**join_argv(char **argv, char *new);
-char	**parse_argv(char *cmd);
+# include "./inc/free.h"
+# include "./inc/parse_argv.h"
+# include "./inc/parse_env.h"
+# include "./inc/parse_token.h"
+# include "./inc/test_funcs.h"
+# include "./inc/make_envp_list.h"
+# include "./inc/set_signal.h"
+# include "./inc/builtin.h"
+# include "./inc/signal.h"
 
 #endif
