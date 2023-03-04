@@ -6,15 +6,15 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 15:36:43 by junhyupa          #+#    #+#              #
-#    Updated: 2023/03/03 21:27:36 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/03/04 16:52:39 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
 CFLAGS = -Werror -Wextra -Wall -g -fsanitize=address
-# READL = -lreadline -L/home/linuxbrew/.linuxbrew/Cellar/readline/8.2.1/lib
-# READI =-I/home/linuxbrew/.linuxbrew/Cellar/readline/8.2.1/include
+READL = -L${HOME}/.brew/opt/readline/lib
+READI = -I${HOME}/.brew/opt/readline/include
 # READL = -lreadline $(LDFLAGS)
 # READI =$(CPPFLAGS)
 
@@ -39,7 +39,7 @@ LIBFT_DIR = ./libft/
 all : $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(READI) -c $< -o $@
 
 clean :
 	make -C $(LIBFT_DIR) clean
@@ -52,7 +52,7 @@ fclean : clean
 re : fclean all
 
 $(NAME) : $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $^ -l readline -o $@
+	$(CC) $(CFLAGS) -lreadline $(READL) $(READI) $^ -o $@
 
 $(LIBFT) :
 	make -C $(LIBFT_DIR)

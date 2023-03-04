@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:40:13 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/03 21:28:33 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:49:03 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_envp_node{
 
 # include "./libft/libft.h"
 # include <signal.h>
+# include <termios.h>
 # include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
