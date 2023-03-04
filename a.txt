@@ -1,0 +1,14 @@
+.
+..
+.DS_Store
+.git
+.vscode
+a.txt
+inc
+libft
+makefile
+minishell
+minishell.h
+parser.c
+srcs
+tset.txt

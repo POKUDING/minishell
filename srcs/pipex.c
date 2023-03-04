@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:33:55 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/03 20:52:13 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/04 21:40:45 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	executer(t_token token, t_envp_node *env)
 	char	*path;
 
 	path = find_path(ft_strjoin("/", token.argv[0]), \
-					 ft_split(find_env("PATH", env), ':'));
+					 ft_split(find_env(ft_strdup("PATH"), env), ':'));
 	if (!path)
 		path = token.argv[0];
-	if (execve(path, token.argv, env) == -1)
+	if (execve(path, token.argv, make_envbox(env)) == -1)
 		error_control("command not found: ", token.argv[0], 127);
 }
 
-void	run_process(t_token *token)
+void	run_process(t_token *token, t_envp_node *env)
 {
 	pid_t	pid;
 	int		fd[2];
@@ -57,25 +57,33 @@ void	run_process(t_token *token)
 	{
 		dup2(fd[1],1);
 		close(fd[0]);
-		close(fd[1]);
+		executer(*token, env);
 	}
 	else
 	{
 		dup2(fd[0],0);
-		close(fd[0]);
 		close(fd[1]);
 	}
 }
 
-void	pipex(t_token *head)
+void	pipex(t_token *head, t_envp_node *env)
 {
 	t_token	*tmp;
+	int		status;
+	pid_t	pid;
 
 	tmp = head;
-	while (tmp)
+	pid = fork();
+	if (pid != 0)
 	{
-		run_process(tmp);
+		wait(&status);
+		return ;
+	}
+	while (tmp->next)
+	{
+		if(!tmp->operator)
+			run_process(tmp, env);
 		tmp = tmp->next;
 	}
-	dup2(1, 0);
+	executer(*tmp , env);
 }

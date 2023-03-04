@@ -19,7 +19,7 @@ char **make_envbox(t_envp_node *head)
 	rtn[i] = 0;
 	while (j < i && tmp)
 	{
-		rtn[j++] = ft_strjoin(tmp->name, tmp->value);
+		rtn[j++] = join_n_free(ft_strjoin(tmp->name,"="),ft_strdup(tmp->value));
 		tmp = tmp->next;
 	}
 	return (rtn);

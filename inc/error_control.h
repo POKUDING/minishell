@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_envp_list.h                                   :+:      :+:    :+:   */
+/*   error_control.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 17:05:48 by jisulee           #+#    #+#             */
-/*   Updated: 2023/03/04 19:46:17 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/03/04 19:55:11 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/03/04 19:56:02 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAKE_ENVP_LIST_H
-# define MAKE_ENVP_LIST_H
+#ifndef ERROR_CONTROL_H
+# define ERROR_CONTROL_H
 
 # include "../minishell.h"
 
-char		 **make_envbox(t_envp_node *head);
-t_envp_node	*get_envp(char **envp);
-t_envp_node	*make_node(t_envp_node *head, char *envp);
-void		make_info(t_envp_node *node, char *envp);
+void	error_control(char *msg, char *msg2, int n);
 
 #endif
