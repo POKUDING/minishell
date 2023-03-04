@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:39:57 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/03 21:20:40 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:28:26 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_token	*parse_token(char *cmd, t_envp_node *env)
 	while (*cmd)
 	{
 		i = 0;
-		while (ft_strchr("|<>&",cmd[i]))
+		if (ft_strchr("|<>&",cmd[i]))
 			i++;
 		if (i == 0)
 		{

@@ -6,13 +6,13 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:41:48 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/03 21:13:09 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/04 21:08:25 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void print_token_list(t_token *head)
+void	print_token_list(t_token *head)
 {
 	size_t	i;
 
@@ -26,7 +26,17 @@ void print_token_list(t_token *head)
 			printf("argv%ld : %s\n", i, head->argv[i]);
 			i++;
 		}
-		printf("operator %d \n", head->operator);
+		printf("operator %d \n\n", head->operator);
+		printf("\n---------------------\n\n");
 		head = head->next;
+	}
+}
+
+void	print_env_list(t_envp_node *env)
+{
+	while (env)
+	{
+		printf("name : %s, vlaue : %s\n", env->name, env->value);
+		env = env->next;
 	}
 }

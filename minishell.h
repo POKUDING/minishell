@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:40:13 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/04 16:49:03 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:56:40 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ typedef struct	s_envp_node{
 //del del!! del!!
 # include "./inc/test_funcs.h"
 
+# include "./inc/error_control.h"
+# include "./inc/pipex.h"
 # include "./inc/free.h"
 # include "./inc/parse_argv.h"
 # include "./inc/parse_env.h"
 # include "./inc/parse_token.h"
-# include "./inc/test_funcs.h"
 # include "./inc/make_envp_list.h"
 # include "./inc/set_signal.h"
 # include "./inc/builtin.h"
