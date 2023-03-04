@@ -1,11 +1,1 @@
-libft
-main.c
-main.o
-makefile
-minishell
-minishell.h
-parser.c
-parser.o
-readline
-test.c
-tset.txt
+aaaaa
