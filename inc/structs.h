@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 19:46:59 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/05 19:09:55 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/03/05 18:46:09 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/03/05 19:04:06 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-# include "../minishell.h"
+typedef struct s_token
+{
+	char			*cmd;
+	char			**argv;
+	int				operator;
+	int				in_fd;
+	int				out_fd;
+	struct s_token	*next;
+}	t_token;
 
-char	*find_path(char *cmd, char **paths);
-void	executer(t_token token, t_envp_node *env);
-void	connect_pipe(t_token *token);
-void	run_process(t_token *token, t_envp_node *env);
-void	pipex(t_token *head, t_envp_node *env);
+typedef struct s_envp_node{
+	char				*name;
+	char				*value;
+	struct s_envp_node	*next;
+}	t_envp_node;
 
 #endif
