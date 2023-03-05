@@ -1,6 +1,6 @@
 #include "../minishell.h"
 
-char **make_envbox(t_envp_node *head)
+char	**make_envbox(t_envp_node *head)
 {
 	size_t		i;
 	size_t		j;
@@ -19,13 +19,14 @@ char **make_envbox(t_envp_node *head)
 	rtn[i] = 0;
 	while (j < i && tmp)
 	{
-		rtn[j++] = join_n_free(ft_strjoin(tmp->name,"="),ft_strdup(tmp->value));
+		rtn[j++] = join_n_free(ft_strjoin(tmp->name, "="), \
+								ft_strdup(tmp->value));
 		tmp = tmp->next;
 	}
 	return (rtn);
 }
 
-void make_info(t_envp_node *node, char *envp)
+void	make_info(t_envp_node *node, char *envp)
 {
 	int		idx;
 	char	**arr;
@@ -38,7 +39,7 @@ void make_info(t_envp_node *node, char *envp)
 	free_box(arr);
 }
 
-t_envp_node *make_node(t_envp_node *head, char *envp)
+t_envp_node	*make_node(t_envp_node *head, char *envp)
 {
 	t_envp_node	*node;
 	t_envp_node	*temp;
@@ -60,8 +61,8 @@ t_envp_node *make_node(t_envp_node *head, char *envp)
 
 t_envp_node	*get_envp(char **envp)
 {
-	int		idx;
-	t_envp_node *head;
+	int			idx;
+	t_envp_node	*head;
 
 	idx = 0;
 	head = NULL;

@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:04:52 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/04 21:06:57 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:16:03 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*find_env(char *s, t_envp_node *head)
 {
-	while(head)
+	while (head)
 	{
 		if (!ft_strncmp(head->name, s, ft_strlen(s)))
 			break ;
@@ -47,7 +47,8 @@ char	*change_env(char *s, size_t *index, t_envp_node *env)
 
 	head = ft_substr(s, 0, *index);
 	i = 0;
-	while (s[*index + i + 1] && s[*index + i + 1] != ' ' && s[*index + i + 1] != '"')
+	while (s[*index + i + 1] && \
+		s[*index + i + 1] != ' ' && s[*index + i + 1] != '"')
 		i++;
 	env_tmp = find_env(ft_substr(s, *index + 1, i), env);
 	tail = ft_substr(s, *index + i + 1, ft_strlen(&s[*index + i + 1]));
@@ -63,7 +64,7 @@ char	*check_env(char	*s, t_envp_node *env)
 	char	flag;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
 		flag = 0;
 		if (s[i] == '\'')

@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 21:05:56 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/03 21:07:54 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:14:23 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	command_pwd(void)
 
 void	command_env(t_envp_node *env)
 {
-	t_envp_node *temp;
+	t_envp_node	*temp;
 
 	temp = env;
 	while (temp)
@@ -105,7 +105,6 @@ void	print_export_env(t_envp_node *env)
 			printf("declare -x %s\n", temp->name);
 		temp = temp->next;
 	}
-
 }
 
 // void	command_export(char **arr, t_envp_node *env)

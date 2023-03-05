@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:39:57 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/04 19:28:26 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:54:18 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ t_token	*add_token(t_token *token, char	*cmd, t_envp_node *env)
 
 	new = (t_token *)malloc(sizeof(t_token));
 	ft_bzero(new, sizeof(t_token));
-	if (ft_strchr("|<>&", cmd[0]))
+	if (*cmd == '|')
 		new->operator = 1;
 	if (!new->operator)
 	{
 		new->cmd = check_env(cmd, env);
-	 	new->argv = parse_argv(new->cmd);
+		new->argv = parse_argv(new->cmd);
 	}
 	else
 		new->cmd = cmd;
 	if (!token)
 		return (new);
 	tmp = token;
-	while(tmp->next)
+	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new;
 	return (token);
@@ -48,20 +48,18 @@ t_token	*parse_token(char *cmd, t_envp_node *env)
 	while (*cmd)
 	{
 		i = 0;
-		if (ft_strchr("|<>&",cmd[i]))
-			i++;
-		if (i == 0)
+		if (*cmd == '|')
+			rtn = add_token(rtn, ft_substr(cmd++, 0, 1), env);
+		while (cmd[i] && (!ft_strchr("|", cmd[i]) || flag))
 		{
-			while(cmd[i] && (!ft_strchr("|<>&",cmd[i]) || flag))
-			{
-				if (!flag && (cmd[i] == '"' || cmd[i] == '\''))
-					flag = cmd[i];
-				else if (flag && (flag == cmd[i] || flag == cmd[i]))
-					flag = 0;
-				i++;
-			}
+			if (!flag && (cmd[i] == '"' || cmd[i] == '\''))
+				flag = cmd[i];
+			else if (flag && (flag == cmd[i] || flag == cmd[i]))
+				flag = 0;
+			i++;
 		}
-		rtn = add_token(rtn, ft_substr(cmd, 0, i), env);
+		if (i)
+			rtn = add_token(rtn, ft_substr(cmd, 0, i), env);
 		cmd += i;
 	}
 	return (rtn);

@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_envp_list.h                                   :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 17:05:48 by jisulee           #+#    #+#             */
-/*   Updated: 2023/03/05 18:21:14 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/03/05 18:46:09 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/03/05 19:04:06 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAKE_ENVP_LIST_H
-# define MAKE_ENVP_LIST_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-# include "../minishell.h"
+typedef struct s_token
+{
+	char			*cmd;
+	char			**argv;
+	int				operator;
+	int				in_fd;
+	int				out_fd;
+	struct s_token	*next;
+}	t_token;
 
-char		**make_envbox(t_envp_node *head);
-t_envp_node	*get_envp(char **envp);
-t_envp_node	*make_node(t_envp_node *head, char *envp);
-void		make_info(t_envp_node *node, char *envp);
+typedef struct s_envp_node{
+	char				*name;
+	char				*value;
+	struct s_envp_node	*next;
+}	t_envp_node;
 
 #endif
