@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jisulee <jisulee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 19:03:53 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/06 22:19:01 by jisulee          ###   ########.fr       */
+/*   Created: 2023/03/06 20:14:20 by jisulee           #+#    #+#             */
+/*   Updated: 2023/03/06 22:16:43 by jisulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+int	check_arg(char *str)
 {
-	char		*line;
-	t_envp_node	*env;
-	t_token		*head;
+	int	idx;
 
-	if (argc > 1 && argv[1])
-		return (0);
-	env = get_envp(envp);
-	set_signal();
-	while (1)
+	idx = 0;
+	while (str[idx])
 	{
-		line = readline("minishell$  ");
-		if (!line)
-			do_sigterm();
-		head = parse_token(line, env);
-		if(head)
-			pipex(head, env);
-		add_history(line);
-		free(line);
+		if (!(str[idx] >= '0' && str[idx] <= '9'))
+			return (1);
+		idx++;
 	}
+	return (0);
+}
+
+void	command_exit(char **arr)
+{
+	printf("exit\n");
+	if (!arr[1])
+		exit(1);
+	if (check_arg(arr[1]))
+	{	
+		printf("minishell: exit: %s: numeric argument required\n", arr[1]);
+		exit(1);
+	}
+	if (arr[2])
+		printf("minishell: exit: too many arguments\n");
 }

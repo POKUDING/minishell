@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_envp_list.h                                   :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jisulee <jisulee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 17:05:48 by jisulee           #+#    #+#             */
-/*   Updated: 2023/03/06 16:10:39 by jisulee          ###   ########.fr       */
+/*   Created: 2023/03/06 15:41:10 by jisulee           #+#    #+#             */
+/*   Updated: 2023/03/06 15:42:50 by jisulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAKE_ENVP_LIST_H
-# define MAKE_ENVP_LIST_H
+#include "../minishell.h"
 
-# include "../minishell.h"
+void	command_env(t_envp_node *env)
+{
+	t_envp_node *temp;
 
-char		 **make_envbox(t_envp_node *head);
-t_envp_node	*get_envp(char **envp);
-t_envp_node	*make_node(t_envp_node *head, char *envp);
-t_envp_node	*make_info(t_envp_node *node, char *envp);
-int			find_char(char *str, char ch);
-
-#endif
+	temp = env;
+	while (temp)
+	{
+		if (temp->value)
+			printf("%s=%s\n", temp->name, temp->value);
+		temp = temp->next;
+	}
+}

@@ -25,17 +25,42 @@ char **make_envbox(t_envp_node *head)
 	return (rtn);
 }
 
-void make_info(t_envp_node *node, char *envp)
+int	find_char(char *str, char ch)
 {
-	int		idx;
-	char	**arr;
+	int	idx;
 
 	idx = 0;
-	arr = ft_split(envp, '=');
-	node->name = ft_strdup(arr[0]);
-	if (arr[1])
-		node->value = ft_strdup(arr[1]);
-	free_box(arr);
+	while (str[idx])
+	{
+		if (str[idx] == ch)
+			return (idx);
+		idx++;
+	}
+	return (0);
+}
+
+t_envp_node	*make_info(t_envp_node *node, char *envp)
+{
+	int		idx;
+	int		name_len;
+	char	*str;
+
+	idx = 0;
+	name_len = find_char(envp, '=');
+	if (!name_len)
+		name_len = ft_strlen(envp);
+	str = malloc(sizeof(char) * name_len + 1);
+	while (idx < name_len)
+	{
+		str[idx] = envp[idx];
+		idx++;
+	}
+	str[idx] = 0;
+	node->name = str;
+	node->value = 0;
+	if (find_char(envp, '='))
+		node->value = ft_strdup(&envp[idx + 1]);
+	return (node);
 }
 
 t_envp_node *make_node(t_envp_node *head, char *envp)

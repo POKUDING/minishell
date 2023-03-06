@@ -3,23 +3,22 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: jisulee <jisulee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 15:36:43 by junhyupa          #+#    #+#              #
-#    Updated: 2023/03/04 19:56:52 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/03/06 22:05:52 by jisulee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
-CFLAGS = -Werror -Wextra -Wall -g -fsanitize=address
+CFLAGS = -Werror -Wextra -Wall
 READL = -L${HOME}/.brew/opt/readline/lib
 READI = -I${HOME}/.brew/opt/readline/include
 # READL = -lreadline $(LDFLAGS)
 # READI =$(CPPFLAGS)
 
 SRC = test_funcs.c \
-		builtin.c \
 		minishell.c \
 		parse_argv.c \
 		parse_env.c \
@@ -29,7 +28,13 @@ SRC = test_funcs.c \
 		set_signal.c \
 		signal.c \
 		pipex.c \
-		error_control.c
+		error_control.c \
+		echo.c \
+		pwd.c \
+		env.c \
+		export.c \
+		unset.c \
+		exit.c \
 
 SRCS = $(addprefix ./srcs/, $(SRC))
 
