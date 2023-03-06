@@ -18,6 +18,5 @@ int	main(int argc, char **argv, char **envp)
 		head = parse_token(line, env);
 		add_history(line);
 		free(line);
-		printf("ccc");
 	}
 }
