@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:04:52 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/03 21:20:03 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/04 21:06:57 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ char	*find_env(char *s, t_envp_node *head)
 {
 	while(head)
 	{
-		if (ft_strncmp(head->name, s, ft_strlen(s)))
+		if (!ft_strncmp(head->name, s, ft_strlen(s)))
 			break ;
-		head = head->next;
+		else
+			head = head->next;
 	}
 	free(s);
 	if (!head)
@@ -62,7 +63,6 @@ char	*check_env(char	*s, t_envp_node *env)
 	char	flag;
 
 	i = 0;
-	printf("check_env : %s\n", s);
 	while(s[i])
 	{
 		flag = 0;
@@ -75,6 +75,5 @@ char	*check_env(char	*s, t_envp_node *env)
 		else
 			i++;
 	}
-	printf("check_env res : %s\n",s);
 	return (s);
 }

@@ -6,7 +6,7 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 15:36:43 by junhyupa          #+#    #+#              #
-#    Updated: 2023/03/04 16:52:39 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/03/04 19:56:52 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRC = test_funcs.c \
 		free.c \
 		make_envp_list.c \
 		set_signal.c \
-		signal.c
+		signal.c \
+		pipex.c \
+		error_control.c
 
 SRCS = $(addprefix ./srcs/, $(SRC))
 
