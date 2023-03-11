@@ -14,8 +14,8 @@
 
 void	command_pwd(void)
 {
-	char	buff[1000];
+	char	*str;
 
-	getcwd(buff, 1000);
-	printf("%s\n", buff);
+	str = getcwd(0, 0);
+	printf("%s\n", str);
 }

@@ -28,9 +28,8 @@ int	main(int argc, char **argv, char **envp)
 		if (!line)
 			do_sigterm();
 		head = parse_token(line, env);
-		if(head)
-			pipex(head, env);
 		add_history(line);
 		free(line);
+		printf("bbb");
 	}
 }

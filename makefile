@@ -35,6 +35,8 @@ SRC = test_funcs.c \
 		export.c \
 		unset.c \
 		exit.c \
+		cd.c \
+
 
 SRCS = $(addprefix ./srcs/, $(SRC))
 

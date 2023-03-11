@@ -35,5 +35,6 @@ int		name_cmp(char *str, char *env, int name_len);
 
 void	command_exit(char **arr);
 
+void	command_cd(char **arr, t_envp_node *head);
 
 #endif
