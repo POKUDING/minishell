@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jisulee <jisulee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 19:03:53 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/06 22:19:01 by jisulee          ###   ########.fr       */
+/*   Created: 2023/03/06 15:40:10 by jisulee           #+#    #+#             */
+/*   Updated: 2023/03/06 15:42:54 by jisulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	command_pwd(void)
 {
-	char		*line;
-	t_envp_node	*env;
-	t_token		*head;
+	char	*str;
 
-	if (argc > 1 && argv[1])
-		return (0);
-	env = get_envp(envp);
-	set_signal();
-	while (1)
-	{
-		line = readline("minishell$  ");
-		if (!line)
-			do_sigterm();
-		head = parse_token(line, env);
-		add_history(line);
-		free(line);
-		printf("bbb");
-	}
+	str = getcwd(0, 0);
+	printf("%s\n", str);
 }

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jisulee <jisulee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 19:03:53 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/06 22:19:01 by jisulee          ###   ########.fr       */
+/*   Created: 2023/03/06 15:41:10 by jisulee           #+#    #+#             */
+/*   Updated: 2023/03/06 15:42:50 by jisulee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	command_env(t_envp_node *env)
 {
-	char		*line;
-	t_envp_node	*env;
-	t_token		*head;
+	t_envp_node *temp;
 
-	if (argc > 1 && argv[1])
-		return (0);
-	env = get_envp(envp);
-	set_signal();
-	while (1)
+	temp = env;
+	while (temp)
 	{
-		line = readline("minishell$  ");
-		if (!line)
-			do_sigterm();
-		head = parse_token(line, env);
-		add_history(line);
-		free(line);
-		printf("bbb");
+		if (temp->value)
+			printf("%s=%s\n", temp->name, temp->value);
+		temp = temp->next;
 	}
 }
