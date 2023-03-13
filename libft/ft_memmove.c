@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhyupa <junhyupa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:26:41 by junhyupa          #+#    #+#             */
-/*   Updated: 2022/07/21 20:12:56 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:22:58 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	{
 		while (i < len)
 		{
-			dst_tmp[len - i -1] = src_tmp[len - i -1];
+			dst_tmp[len - i - 1] = src_tmp[len - i - 1];
 			i++;
 		}
 	}
