@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:46:09 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/05 19:04:06 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:11:46 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_token
 	char			*cmd;
 	char			**argv;
 	int				operator;
+	pid_t			pid;
 	int				in_fd;
 	int				out_fd;
 	struct s_token	*next;

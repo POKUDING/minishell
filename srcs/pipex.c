@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:33:55 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/05 19:11:42 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:36:31 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,9 @@ void	connect_pipe(t_token *token)
 
 void	run_process(t_token *token, t_envp_node *env)
 {
-	pid_t	pid;
-
 	connect_pipe(token);
-	pid = fork();
-	if (pid == 0)
+	token->pid = fork();
+	if (token->pid == 0)
 	{
 		dup2(token->in_fd, 1);
 		close(token->out_fd);
@@ -71,6 +69,25 @@ void	run_process(t_token *token, t_envp_node *env)
 	{
 		dup2(token->out_fd, 0);
 		close(token->in_fd);
+	}
+}
+
+void	end_process(t_token *head, t_token *token, t_envp_node *env)
+{
+	int	status;
+	
+	token->pid = fork();
+	if (token-> pid == 0)
+		executer(*token, env);
+	else
+	{
+		while (head)
+		{
+			if (!head->operator)
+				waitpid(head->pid, &status, 0);
+			head = head->next;
+		}
+		exit (0);
 	}
 }
 
@@ -93,5 +110,5 @@ void	pipex(t_token *head, t_envp_node *env)
 			run_process(tmp, env);
 		tmp = tmp->next;
 	}
-	executer(*tmp, env);
+	end_process(head, tmp, env);
 }
