@@ -6,11 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:39:57 by junhyupa          #+#    #+#             */
-<<<<<<< HEAD:srcs/init/parse_token.c
-/*   Updated: 2023/03/13 21:53:23 by junhyupa         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/05 18:54:18 by junhyupa         ###   ########.fr       */
->>>>>>> 28add55d43a6124e70152ba19aa65c083b2a757e:srcs/parse_token.c
+/*   Updated: 2023/03/13 23:06:10 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

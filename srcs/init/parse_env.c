@@ -6,11 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:04:52 by junhyupa          #+#    #+#             */
-<<<<<<< HEAD:srcs/init/parse_env.c
-/*   Updated: 2023/03/13 21:53:19 by junhyupa         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/05 18:16:03 by junhyupa         ###   ########.fr       */
->>>>>>> 28add55d43a6124e70152ba19aa65c083b2a757e:srcs/parse_env.c
+/*   Updated: 2023/03/13 23:06:04 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
