@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:03:53 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/13 21:56:29 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:03:39 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(int argc, char **argv, char **envp)
 		if (!line)
 			do_sigterm();
 		head = parse_token(line, env);
-		pipex(head, env);
+		if (head)
+			pipex(head, env);
 		add_history(line);
 		free(line);
 	}

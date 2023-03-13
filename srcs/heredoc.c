@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 19:46:59 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/05 19:09:55 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/03/05 19:13:02 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/03/07 16:48:54 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../minishell.h"
 
-# include "../minishell.h"
+void	here_doc(t_token *token, char *eof)
+{
+	char	*s;
+	int		fd[2];
 
-char	*find_path(char *cmd, char **paths);
-void	executer(t_token token, t_envp_node *env);
-void	connect_pipe(t_token *token);
-void	run_process(t_token *token, t_envp_node *env);
-void	pipex(t_token *head, t_envp_node *env);
-
-#endif
+	s = readline("<");
+	pipe(&fd);
+	dup2(fd[0], 0);
+	while(ft_strncmp(s, eof, sizeof(eof)))
+		write(fd[1], s, ft_strlen(s));
+}
