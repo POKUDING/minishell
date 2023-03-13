@@ -1,4 +1,4 @@
-#include "../minishell.h"
+#include "../../minishell.h"
 
 t_envp_node	*find_envp_node(char *str, t_envp_node *node)
 {

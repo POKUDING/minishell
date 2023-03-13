@@ -6,11 +6,11 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:04:52 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/04 21:06:57 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:53:19 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 char	*find_env(char *s, t_envp_node *head)
 {

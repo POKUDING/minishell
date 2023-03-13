@@ -6,11 +6,11 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:39:57 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/04 19:28:26 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:53:23 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 t_token	*add_token(t_token *token, char	*cmd, t_envp_node *env)
 {

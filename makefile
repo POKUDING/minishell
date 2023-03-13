@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jisulee <jisulee@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 15:36:43 by junhyupa          #+#    #+#              #
-#    Updated: 2023/03/06 22:05:52 by jisulee          ###   ########.fr        #
+#    Updated: 2023/03/13 21:54:43 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 CC = cc
-CFLAGS = -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall -g -fsanitize=address
 READL = -L${HOME}/.brew/opt/readline/lib
 READI = -I${HOME}/.brew/opt/readline/include
 # READL = -lreadline $(LDFLAGS)
@@ -20,25 +20,33 @@ READI = -I${HOME}/.brew/opt/readline/include
 
 SRC = test_funcs.c \
 		minishell.c \
-		parse_argv.c \
-		parse_env.c \
-		parse_token.c \
-		free.c \
-		make_envp_list.c \
-		set_signal.c \
-		signal.c \
 		pipex.c \
-		error_control.c \
-		echo.c \
+
+
+BUILTIN_SRC	= echo.c \
 		pwd.c \
 		env.c \
 		export.c \
 		unset.c \
 		exit.c \
-		cd.c \
+		cd.c
 
 
-SRCS = $(addprefix ./srcs/, $(SRC))
+INIT_SRC = make_envp_list.c \
+		parse_argv.c \
+		parse_env.c \
+		parse_token.c \
+
+UTIL_SRC = error_control.c \
+		set_signal.c \
+		signal.c \
+		free.c \
+
+
+SRCS = $(addprefix ./srcs/, $(SRC)) $(addprefix ./srcs/builtin/, $(BUILTIN_SRC)) $(addprefix ./srcs/init/, $(INIT_SRC)) $(addprefix ./srcs/util/, $(UTIL_SRC))
+# BUILTIN_SRCS = $(addprefix ./srcs/builtin, $(SRC))
+# INIT_SRCS = $(addprefix ./srcs/init, $(SRC))
+# UTIL_SRCS = $(addprefix ./srcs/util, $(SRC))
 
 OBJS = $(SRCS:.c=.o)
 

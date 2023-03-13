@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisulee <jisulee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 15:40:10 by jisulee           #+#    #+#             */
-/*   Updated: 2023/03/06 15:42:54 by jisulee          ###   ########.fr       */
+/*   Created: 2023/03/06 15:41:10 by jisulee           #+#    #+#             */
+/*   Updated: 2023/03/13 21:52:42 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-void	command_pwd(void)
+void	command_env(t_envp_node *env)
 {
-	char	*str;
+	t_envp_node *temp;
 
-	str = getcwd(0, 0);
-	printf("%s\n", str);
+	temp = env;
+	while (temp)
+	{
+		if (temp->value)
+			printf("%s=%s\n", temp->name, temp->value);
+		temp = temp->next;
+	}
 }

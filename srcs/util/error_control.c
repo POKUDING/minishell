@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   error_control.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 20:58:43 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/03 20:30:37 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/03/04 19:54:48 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/03/13 21:53:27 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-void	free_box(char **box)
+void	error_control(char *msg, char *msg2, int n)
 {
-	size_t	i;
+	char	*output;
 
-	i = 0;
-	while (box[i])
-		free(box[i++]);
-	free(box[i]);
-	free(box);
-}
-
-void	free_token_list(t_token *head)
-{
-	t_token	*tmp;
-
-	while (head && head->next)
-	{
-		tmp = head;
-		head = head->next;
-		free (tmp->cmd);
-		free_box (tmp->argv);
-		free (tmp);
-	}
-	free (head);
+	if (msg2)
+		output = ft_strjoin(msg, msg2);
+	else
+		output = ft_strjoin(msg, strerror(n));
+	write(2, output, ft_strlen(output));
+	write(2, "\n", 1);
+	exit(n);
 }
