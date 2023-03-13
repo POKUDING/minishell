@@ -6,11 +6,11 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 21:23:29 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/03 21:23:50 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:53:41 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 //void	do_signal_heredoc(int signum)
 

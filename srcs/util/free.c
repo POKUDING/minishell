@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 15:39:45 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/03 21:03:12 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/02/28 20:58:43 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/03/13 21:53:30 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-int	main(int argc, char*argv[], char **env)
+void	free_box(char **box)
 {
-	char	*s;
-	t_token	*head;
+	size_t	i;
 
-	(void)argc;
-	(void)argv;
-	s = readline("shell:");
-	while (*s)
+	i = 0;
+	while (box[i])
+		free(box[i++]);
+	free(box[i]);
+	free(box);
+}
+
+void	free_token_list(t_token *head)
+{
+	t_token	*tmp;
+
+	while (head && head->next)
 	{
-		head = parse_token(s, env);
-		print_token_list(head);
-		s = readline("test:");
+		tmp = head;
+		head = head->next;
+		free (tmp->cmd);
+		free_box (tmp->argv);
+		free (tmp);
 	}
-	free(s);
-	exit(0);
+	free (head);
 }

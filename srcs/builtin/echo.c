@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin.c                                          :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD:srcs/builtin.c
 /*   Created: 2023/03/03 21:05:56 by junhyupa          #+#    #+#             */
 /*   Updated: 2023/03/05 18:14:23 by junhyupa         ###   ########.fr       */
+=======
+/*   Created: 2023/03/06 15:38:44 by jisulee           #+#    #+#             */
+/*   Updated: 2023/03/13 21:52:33 by junhyupa         ###   ########.fr       */
+>>>>>>> master:srcs/builtin/echo.c
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 int	check_echo_option(char *option)
 {
@@ -52,6 +57,7 @@ void	command_echo(char **str)
 	}
 	if (option == 0)
 		printf("\n");
+<<<<<<< HEAD:srcs/builtin.c
 }
 
 void	command_pwd(void)
@@ -121,3 +127,6 @@ void	print_export_env(t_envp_node *env)
 // 	}
 
 // }
+=======
+}
+>>>>>>> master:srcs/builtin/echo.c

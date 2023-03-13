@@ -6,11 +6,15 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:04:52 by junhyupa          #+#    #+#             */
+<<<<<<< HEAD:srcs/parse_env.c
 /*   Updated: 2023/03/05 18:16:03 by junhyupa         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/13 21:53:19 by junhyupa         ###   ########.fr       */
+>>>>>>> master:srcs/init/parse_env.c
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 char	*find_env(char *s, t_envp_node *head)
 {

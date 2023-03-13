@@ -6,7 +6,11 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:40:13 by junhyupa          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/05 18:47:39 by junhyupa         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/13 22:01:38 by junhyupa         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +23,8 @@
 # include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 

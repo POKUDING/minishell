@@ -6,11 +6,15 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:39:57 by junhyupa          #+#    #+#             */
+<<<<<<< HEAD:srcs/parse_token.c
 /*   Updated: 2023/03/05 18:54:18 by junhyupa         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/13 21:53:23 by junhyupa         ###   ########.fr       */
+>>>>>>> master:srcs/init/parse_token.c
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 t_token	*add_token(t_token *token, char	*cmd, t_envp_node *env)
 {

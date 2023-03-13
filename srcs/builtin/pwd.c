@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errorcontrol.c                                     :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 19:54:48 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/04 19:57:35 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/03/06 15:40:10 by jisulee           #+#    #+#             */
+/*   Updated: 2023/03/13 21:52:56 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-void	error_control(char *msg, char *msg2, int n)
+void	command_pwd(void)
 {
-	char	*output;
+	char	*str;
 
-	if (msg2)
-		output = ft_strjoin(msg, msg2);
-	else
-		output = ft_strjoin(msg, strerror(n));
-	write(2, output, ft_strlen(output));
-	write(2, "\n", 1);
-	exit(n);
+	str = getcwd(0, 0);
+	printf("%s\n", str);
 }

@@ -6,7 +6,11 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:03:53 by junhyupa          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/05 18:15:25 by junhyupa         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/13 21:56:29 by junhyupa         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +32,12 @@ int	main(int argc, char **argv, char **envp)
 		if (!line)
 			do_sigterm();
 		head = parse_token(line, env);
+<<<<<<< HEAD
 		if (head)
 			pipex(head, env);
+=======
+		pipex(head, env);
+>>>>>>> master
 		add_history(line);
 		free(line);
 	}
