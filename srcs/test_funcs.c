@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:41:48 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/04 21:08:25 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:05:49 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_token_list(t_token *head)
 	{
 		i = 0;
 		printf("\n---------------------\n\n");
-		printf("cmd : %s \n", head->cmd);
+		printf("cmd ::%s$\n", head->cmd);
 		while (head->argv && head->argv[i])
 		{
 			printf("argv%ld : %s\n", i, head->argv[i]);

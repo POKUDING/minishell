@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:33:55 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/13 23:36:31 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:20:50 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,31 @@ void	executer(t_token token, t_envp_node *env)
 {
 	char	*path;
 
+	if (!token.argv)
+		exit(0);
 	path = find_path(ft_strjoin("/", token.argv[0]), \
 					 ft_split(find_env(ft_strdup("PATH"), env), ':'));
 	if (!path)
 		path = token.argv[0];
 	if (execve(path, token.argv, make_envbox(env)) == -1)
-		error_control("command not found: ", token.argv[0], 127);
+		error_control("minishell: command not found: ", token.argv[0], 127);
 }
 
 void	connect_pipe(t_token *token)
 {
 	int	fd[2];
 
+	if (!token->next || !token->next->operator)
+		return ;
 	pipe(fd);
-	token->out_fd = fd[0];
-	token->in_fd = fd[1];
+	token->next->out_fd = fd[0];
+	token->next->in_fd = fd[1];
+}
+
+void	close_pipe(t_token *token)
+{
+	close(token->in_fd);
+	close(token->out_fd);
 }
 
 void	run_process(t_token *token, t_envp_node *env)
@@ -61,14 +71,16 @@ void	run_process(t_token *token, t_envp_node *env)
 	token->pid = fork();
 	if (token->pid == 0)
 	{
-		dup2(token->in_fd, 1);
-		close(token->out_fd);
+		if (token->in_fd)
+			dup2 (token->in_fd, 0);
+		dup2(token->next->in_fd, 1);
+		close_pipe(token->next);
 		executer(*token, env);
 	}
 	else
 	{
-		dup2(token->out_fd, 0);
-		close(token->in_fd);
+		dup2(token->next->out_fd, 0);
+		close_pipe(token->next);
 	}
 }
 
@@ -78,9 +90,17 @@ void	end_process(t_token *head, t_token *token, t_envp_node *env)
 	
 	token->pid = fork();
 	if (token-> pid == 0)
+	{
+		if (token->in_fd)
+			dup2(token->in_fd, 0);
 		executer(*token, env);
+	}
 	else
 	{
+		close(0);
+		close(1);
+		close(token->in_fd);
+		close(token->out_fd);
 		while (head)
 		{
 			if (!head->operator)
@@ -104,10 +124,15 @@ void	pipex(t_token *head, t_envp_node *env)
 		wait(&status);
 		return ;
 	}
+	pre_set_process(head);
 	while (tmp->next)
 	{
 		if (!tmp->operator)
+		{
 			run_process(tmp, env);
+			close(tmp->in_fd);
+			close(tmp->out_fd);
+		}
 		tmp = tmp->next;
 	}
 	end_process(head, tmp, env);

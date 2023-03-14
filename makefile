@@ -6,7 +6,7 @@
 #    By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 15:36:43 by junhyupa          #+#    #+#              #
-#    Updated: 2023/03/13 21:54:43 by junhyupa         ###   ########.fr        #
+#    Updated: 2023/03/14 15:56:39 by junhyupa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ READI = -I${HOME}/.brew/opt/readline/include
 SRC = test_funcs.c \
 		minishell.c \
 		pipex.c \
-
+		pre_set_process.c \
+		heredoc.c
 
 BUILTIN_SRC	= echo.c \
 		pwd.c \
@@ -31,17 +32,16 @@ BUILTIN_SRC	= echo.c \
 		exit.c \
 		cd.c
 
-
 INIT_SRC = make_envp_list.c \
 		parse_argv.c \
 		parse_env.c \
-		parse_token.c \
+		parse_token.c
 
 UTIL_SRC = error_control.c \
 		set_signal.c \
 		signal.c \
 		free.c \
-
+		str_util.c
 
 SRCS = $(addprefix ./srcs/, $(SRC)) $(addprefix ./srcs/builtin/, $(BUILTIN_SRC)) $(addprefix ./srcs/init/, $(INIT_SRC)) $(addprefix ./srcs/util/, $(UTIL_SRC))
 # BUILTIN_SRCS = $(addprefix ./srcs/builtin, $(SRC))

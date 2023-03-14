@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   heredoc.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 18:46:09 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/14 13:14:32 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/03/14 13:36:14 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/03/14 13:36:59 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef HEREDOC_H
+# define HEREDOC_H
 
-typedef struct s_token
-{
-	char			*cmd;
-	char			**argv;
-	int				operator;
-	pid_t			pid;
-	int				in_fd;
-	int				out_fd;
-	struct s_token	*next;
-	struct s_token	*prev;
-}	t_token;
+# include "../minishell.h"
 
-typedef struct s_envp_node{
-	char				*name;
-	char				*value;
-	struct s_envp_node	*next;
-}	t_envp_node;
+void	here_doc(t_token *token, char *eof);
 
 #endif

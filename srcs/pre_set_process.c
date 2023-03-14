@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   pre_set_process.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 19:03:53 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/14 14:06:59 by junhyupa         ###   ########.fr       */
+/*   Created: 2023/03/14 13:11:23 by junhyupa          #+#    #+#             */
+/*   Updated: 2023/03/14 15:33:53 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	main(int argc, char **argv, char **envp)
-{
-	char		*line;
-	t_envp_node	*env;
-	t_token		*head;
+// void	redirection(t_token *token)
+// {
+// 	return ;
+// }
 
-	if (argc > 1 && argv[1])
-		return (0);
-	env = get_envp(envp);
-	set_signal();
-	while (1)
+
+
+void	check_unexpected_token(t_token *head)
+{
+	while(head)
 	{
-		line = readline("minishell$  ");
-		if (!line)
-			do_sigterm();
-		head = parse_token(line, env);
-		// if(head)
-		// 	print_token_list(head);
-		if (head)
-			pipex(head, env);
-		add_history(line);
-		free(line);
+		if (head->operator && \
+			(!head->prev || head->prev->operator || !head->prev->argv ||\
+			 !head->next || head->next->operator || !head->next->argv))
+		error_control("minishell:", "syntax error near unexpected token `|'", 1);
+		head = head->next;
 	}
+}
+
+void	pre_set_process(t_token *head)
+{
+	check_unexpected_token(head);
 }

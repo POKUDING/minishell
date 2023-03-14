@@ -6,13 +6,13 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 21:53:07 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/13 23:05:52 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:17:29 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-char **make_envbox(t_envp_node *head)
+char	**make_envbox(t_envp_node *head)
 {
 	size_t		i;
 	size_t		j;
@@ -31,7 +31,8 @@ char **make_envbox(t_envp_node *head)
 	rtn[i] = 0;
 	while (j < i && tmp)
 	{
-		rtn[j++] = join_n_free(ft_strjoin(tmp->name,"="),ft_strdup(tmp->value));
+		rtn[j++] = join_n_free(ft_strjoin(tmp->name, "="), \
+							ft_strdup(tmp->value));
 		tmp = tmp->next;
 	}
 	return (rtn);
@@ -75,7 +76,7 @@ t_envp_node	*make_info(t_envp_node *node, char *envp)
 	return (node);
 }
 
-t_envp_node *make_node(t_envp_node *head, char *envp)
+t_envp_node	*make_node(t_envp_node *head, char *envp)
 {
 	t_envp_node	*node;
 	t_envp_node	*temp;
@@ -97,8 +98,8 @@ t_envp_node *make_node(t_envp_node *head, char *envp)
 
 t_envp_node	*get_envp(char **envp)
 {
-	int		idx;
-	t_envp_node *head;
+	int			idx;
+	t_envp_node	*head;
 
 	idx = 0;
 	head = NULL;

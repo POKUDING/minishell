@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:40:13 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/13 23:04:45 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:33:25 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@
 # include "./inc/set_signal.h"
 # include "./inc/builtin.h"
 # include "./inc/signal.h"
+# include "./inc/pre_set_process.h"
+# include "./inc/heredoc.h"
+# include "./inc/str_util.h"
 
 #endif

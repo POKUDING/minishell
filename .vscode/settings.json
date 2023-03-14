@@ -1,5 +1,6 @@
 {
-	"files.associations": {
-		"test_funcs.h": "c"
-	}
+  "files.associations": {
+    "test_funcs.h": "c",
+    "pre_set_process.h": "c"
+  }
 }

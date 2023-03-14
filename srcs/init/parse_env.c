@@ -6,7 +6,7 @@
 /*   By: junhyupa <junhyupa@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:04:52 by junhyupa          #+#    #+#             */
-/*   Updated: 2023/03/13 23:06:04 by junhyupa         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:33:53 by junhyupa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*find_env(char *s, t_envp_node *head)
 {
 	while (head)
 	{
-		if (!ft_strncmp(head->name, s, ft_strlen(s)))
+		if (!ft_strncmp(head->name, s, ft_strlen(head->name)))
 			break ;
 		else
 			head = head->next;
@@ -27,15 +27,6 @@ char	*find_env(char *s, t_envp_node *head)
 	return (head->value);
 }
 
-char	*join_n_free(char *s1, char *s2)
-{
-	char	*rtn;
-
-	rtn = ft_strjoin(s1, s2);
-	free(s1);
-	free(s2);
-	return (rtn);
-}
 
 char	*change_env(char *s, size_t *index, t_envp_node *env)
 {
@@ -50,7 +41,7 @@ char	*change_env(char *s, size_t *index, t_envp_node *env)
 	while (s[*index + i + 1] && \
 		s[*index + i + 1] != ' ' && s[*index + i + 1] != '"')
 		i++;
-	env_tmp = find_env(ft_substr(s, *index + 1, i), env);
+	env_tmp = ft_strdup(find_env(ft_substr(s, *index + 1, i), env));
 	tail = ft_substr(s, *index + i + 1, ft_strlen(&s[*index + i + 1]));
 	*index = ft_strlen(head) + ft_strlen(env_tmp);
 	rtn = join_n_free(join_n_free(head, env_tmp), tail);
@@ -71,7 +62,7 @@ char	*check_env(char	*s, t_envp_node *env)
 			flag = s[i];
 		else if (flag == s[i])
 			flag = 0;
-		if (!flag && s[i] == '$' && (s[i + 1] != ' ' || s[i + 1] != '\0'))
+		if (!flag && s[i] == '$' && (s[i + 1] != ' ' && s[i + 1] != '\0'))
 			s = change_env(s, &i, env);
 		else
 			i++;
